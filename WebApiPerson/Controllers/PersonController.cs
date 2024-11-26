@@ -22,14 +22,16 @@ namespace WebApiPerson.Controllers
         }
 
         // GET: api/Person
-        [HttpGet]
+        [HttpGet("GetPersons")]
+        //[Route("GetPersons")]
         public async Task<ActionResult<IEnumerable<Person>>> GetPersons()
         {
             return await _context.Persons.ToListAsync();
         }
 
         // GET: api/Person/5
-        [HttpGet("{id}")]
+        [HttpGet("GetById/{id}")]
+        //[Route("GetById")]
         public async Task<ActionResult<Person>> GetPerson(int id)
         {
             var person = await _context.Persons.FindAsync(id);
@@ -44,7 +46,8 @@ namespace WebApiPerson.Controllers
 
         // PUT: api/Person/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        [HttpPut("Update/{id}")]
+        //[Route("Update")]
         public async Task<IActionResult> PutPerson(int id, Person person)
         {
             if (id != person.Id)
@@ -75,7 +78,8 @@ namespace WebApiPerson.Controllers
 
         // POST: api/Person
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        [HttpPost("Create")]
+        //[Route("Create")]
         public async Task<ActionResult<Person>> PostPerson(Person person)
         {
             _context.Persons.Add(person);
@@ -85,7 +89,8 @@ namespace WebApiPerson.Controllers
         }
 
         // DELETE: api/Person/5
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete/{id}")]
+        //[Route("Delete")]
         public async Task<IActionResult> DeletePerson(int id)
         {
             var person = await _context.Persons.FindAsync(id);
